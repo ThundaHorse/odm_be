@@ -13,7 +13,8 @@ class Api::PostsController < ApplicationController
   def create 
     post = Post.new(
                     description: params[:description],
-                    user_id: params[:user_id]
+                    user_id: params[:user_id],
+                    image: params[:image]
                   )
 
     if post.save 
