@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
     # Posts 
     get "/posts" => "posts#index"
-    get "/posts/:id" => "posts#show"
     post "/posts" => "posts#create"
+    get "/posts/:id" => "posts#show"
   end 
 end
