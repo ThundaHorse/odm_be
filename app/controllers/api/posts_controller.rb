@@ -10,6 +10,11 @@ class Api::PostsController < ApplicationController
     render "show.json.jbuilder"
   end 
 
+  def user_posts 
+    @posts = Post.where(user_id: [params[:id]])
+    render "index.json.jbuilder"
+  end 
+
   def create 
     post = Post.new(
                     description: params[:description],

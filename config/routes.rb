@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     get "/posts" => "posts#index"
     post "/posts" => "posts#create"
     get "/posts/:id" => "posts#show"
+    get "/posts/user/:id" => "posts#user_posts"
   end 
 end
