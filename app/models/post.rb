@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   has_many :comments
-  has_many :post_states
+  has_one :post_state
 
   def total_likes
     sum = 0

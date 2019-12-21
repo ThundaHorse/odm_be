@@ -6,14 +6,19 @@ class Api::PostStatesController < ApplicationController
   end
 
   def create 
-    @post_state = PostState.create(
+    @post_state = PostState.new(
       post_id: params[:post_id]
     )
     @post_state.save 
     render "show.json.jbuilder"
   end 
 
-  def upvote 
+  def show 
+    @post_state = PostState.find_by(post_id: params[:id])
+    render "show.json.jbuilder"
+  end 
+
+  def upvote     
     @post_state = PostState.find(params[:id])
     @post_state.likes += 1
     @post_state.save
