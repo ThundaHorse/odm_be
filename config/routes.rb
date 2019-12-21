@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     # Post State 
     get "/post/state" => "post_states#index"
     post "/post/state" => "post_states#create"
+    patch "/post/upvote/:id" => "post_states#upvote"
+    patch "/post/downvote/:id" => "post_states#downvote"
     delete "/post/state/:id" => "post_states#destroy"
 
     # Comments 
