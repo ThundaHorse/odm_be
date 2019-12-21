@@ -3,8 +3,5 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   has_many :posts
-
-  # def user_posts 
-  #   Post.where(user_id: self.id)
-  # end 
+  has_many :comments, through: :posts
 end

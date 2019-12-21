@@ -1,0 +1,1 @@
+json.array! @post_states, partial: "post_states", as: :post_state
