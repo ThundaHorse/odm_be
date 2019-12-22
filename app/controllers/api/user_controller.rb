@@ -29,7 +29,7 @@ class Api::UserController < ApplicationController
   end 
 
   def create 
-    user = User.new(
+    @user = User.new(
                     first_name: params[:first_name],
                     last_name: params[:last_name],
                     email: params[:email],
@@ -37,10 +37,11 @@ class Api::UserController < ApplicationController
                     password: params[:password],
                     password_confirmation: params[:password_confirmation]
                     )
-    if user.save 
+    # if @user.validate_phone(@user.phone_number) && @user.save 
+    if @user.save
       render json: { message: "User created successfully" }, status: 200
     else 
-      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end 
   end 
 
