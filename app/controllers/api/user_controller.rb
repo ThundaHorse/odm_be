@@ -12,6 +12,12 @@ class Api::UserController < ApplicationController
     render "show.json.jbuilder"
   end 
 
+  def user_posts 
+    @user = User.find(params[:id])
+    @posts = Post.where(user_id: @user.id)
+    render :partial => "posts/show.json.jbuilder"
+  end 
+
   def update 
     @user = User.find(params[:id])
     @user.first_name = params[:first_name] || @user.first_name 
