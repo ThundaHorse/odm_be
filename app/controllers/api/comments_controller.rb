@@ -1,7 +1,7 @@
 class Api::CommentsController < ApplicationController
   before_action :authenticate_user
   def index 
-    @comments = Comment.all 
+    @comments = Comment.all.order("id")    
     render "index.json.jbuilder"
   end 
 
@@ -11,7 +11,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def post_comments
-    @comments = Comment.where(post_id: params[:post_id])
+    @comments = Comment.where(post_id: params[:post_id]).order("id")
     render "index.json.jbuilder"
   end 
 
@@ -27,6 +27,20 @@ class Api::CommentsController < ApplicationController
     else 
       render json: { message: @comment.errors.full_messages }
     end 
+  end 
+
+  def upvote     
+    @comment = Comment.find(params[:id])
+    @comment.likes += 1
+    @comment.save    
+    render "show.json.jbuilder"
+  end 
+
+  def downvote
+    @comment = Comment.find(params[:id])
+    @comment.dislikes += 1
+    @comment.save    
+    render "show.json.jbuilder"
   end 
 
   def update 

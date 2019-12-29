@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     post "/comments" => "comments#create"
     get "/comments/:id" => "comments#show"
     patch "/comments/:id" => "comments#update"
+    patch "/comments/upvote/:id" => "comments#upvote"
+    patch "/comments/downvote/:id" => "comments#downvote"
     delete "/comments/:id" => "comments#destroy"
 
   end
