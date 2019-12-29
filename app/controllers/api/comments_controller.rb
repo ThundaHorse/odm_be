@@ -1,5 +1,4 @@
 class Api::CommentsController < ApplicationController
-
   def index 
     @comments = Comment.all 
     render "index.json.jbuilder"
@@ -8,12 +7,17 @@ class Api::CommentsController < ApplicationController
   def show 
     @comment = Comment.find(params[:id])
     render "show.json.jbuilder"
+  end
+
+  def post_comments
+    @comments = Comment.where(post_id: params[:post_id])
+    render "index.json.jbuilder"
   end 
 
   def create 
     @comment = Comment.new({
-      post_id: params[:post_id],
-      title: params[:title],
+      user: current_user.first_name, 
+      post_id: params[:post_id],   
       body: params[:body]
     })
 
@@ -25,9 +29,14 @@ class Api::CommentsController < ApplicationController
   end 
 
   def update 
-    @comment = Comment.find(params[:id])
-    @comment.title = params[:title] || @comment.title
+    @comment = Comment.find(params[:id])    
     @comment.body = params[:body] || @comment.body
+    
+    if @comment.save
+      render "show.json.jbuilder"
+    else 
+      render json: { message: @comment.errors.full_messages }
+    end
   end
 
   def destroy 

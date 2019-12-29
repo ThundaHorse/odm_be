@@ -1,6 +1,6 @@
 json.id comment.id 
+json.user comment.user
 json.post_id comment.post_id
-json.title comment.title
 json.body comment.body
 json.likes comment.likes
 json.dislikes comment.dislikes
