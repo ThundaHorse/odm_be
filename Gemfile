@@ -22,6 +22,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "figaro"
 gem 'jwt'
 gem "aws-sdk-s3", require: false
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 gem "rspec-rails", "~> 3.8"
 gem "shoulda-matchers", "~> 4.0.1"
