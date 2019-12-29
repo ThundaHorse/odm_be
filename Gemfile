@@ -23,11 +23,6 @@ gem "figaro"
 gem 'jwt'
 gem "aws-sdk-s3", require: false
 
-gem "rspec-rails", "~> 3.8"
-gem "shoulda-matchers", "~> 4.0.1"
-gem 'rails-controller-testing'
-gem 'simplecov', require: false, group: :test
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -37,6 +32,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "factory_bot_rails"
+  gem "rspec-rails", "~> 3.8"
+  gem "shoulda-matchers", "~> 4.0.1"
+  gem 'rails-controller-testing'
+  gem 'simplecov', require: false
 end
 
 group :development do
