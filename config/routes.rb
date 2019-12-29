@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get "/users" => "user#index"
     post "/users" => "user#create"
     get "/users/:id" => "user#show"
+    get "/posts/user/:id" => "user#user_posts"
     patch "/users/:id" => "user#update"
     delete "/users/:id" => "user#destroy"
 
@@ -28,9 +29,12 @@ Rails.application.routes.draw do
 
     # Comments 
     get "/comments" => "comments#index"
+    get "/comments/post/:post_id" => "comments#post_comments"
     post "/comments" => "comments#create"
     get "/comments/:id" => "comments#show"
     patch "/comments/:id" => "comments#update"
+    patch "/comments/upvote/:id" => "comments#upvote"
+    patch "/comments/downvote/:id" => "comments#downvote"
     delete "/comments/:id" => "comments#destroy"
 
   end
